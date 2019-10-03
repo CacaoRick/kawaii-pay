@@ -1,4 +1,5 @@
 import React from 'react'
+import GitHubButton from 'react-github-btn'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Container from '@material-ui/core/Container'
 import Card from '@material-ui/core/Card'
@@ -57,6 +58,12 @@ const useStyles = makeStyles((theme) => ({
     left: '50%',
     marginTop: -12,
     marginLeft: -12,
+  },
+  githubButton: {
+    position: 'fixed',
+    right: 0,
+    bottom: 0,
+    margin: theme.spacing(),
   },
 }))
 
@@ -181,6 +188,15 @@ function App (props) {
           {isLoading && <CircularProgress size={24} className={classes.buttonProgress} color='secondary' />}
         </div>
       </Card>
+      <div className={classes.githubButton}>
+        <GitHubButton
+          href='https://github.com/cacaorick/kawaii-pay'
+          data-size='large'
+          aria-label='Star cacaorick/kawaii-pay on GitHub'
+        >
+          {'Github'}
+        </GitHubButton>
+      </div>
     </Container>
   )
 }
