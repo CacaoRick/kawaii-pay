@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9f6ee58e34d3c6e77d5e97036003bb71",
+    "revision": "c984489384884efe77fa807f2a57f928",
     "url": "/kawaii-pay/index.html"
   },
   {
