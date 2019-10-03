@@ -74,7 +74,7 @@ function App (props) {
   const [isError, setIsError] = React.useState(false)
 
   React.useEffect(() => {
-    const count = (name ? 1 : 0) + (cardNumber ? 1 : 0) + (expiryMonth && expiryYear && cvs ? 1 : 0) + (isLoading ? 1 : 0)
+    const count = (name ? 1 : 0) + (cardNumber.length === 19 ? 1 : 0) + (expiryMonth.length === 2 && expiryYear.length === 4 && cvs.length === 3 ? 1 : 0) + (isLoading ? 1 : 0)
     setMoodIndex(count)
   }, [cardNumber, cvs, expiryMonth, expiryYear, isLoading, name])
 
