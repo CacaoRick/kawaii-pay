@@ -5,6 +5,7 @@ import Card from '@material-ui/core/Card'
 import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
+import CircularProgress from '@material-ui/core/CircularProgress'
 import { makeStyles } from '@material-ui/core/styles'
 import { CreditCard } from 'react-kawaii'
 
@@ -42,9 +43,20 @@ const useStyles = makeStyles((theme) => ({
   cvs: {
     width: 60,
   },
-  checkout: {
+  buttonWrapper: {
     marginTop: theme.spacing(),
     width: '100%',
+    position: 'relative',
+  },
+  checkout: {
+    width: '100%',
+  },
+  buttonProgress: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    marginTop: -12,
+    marginLeft: -12,
   },
 }))
 
@@ -52,22 +64,24 @@ const moods = ['shocked', 'happy', 'excited', 'blissful', 'lovestruck']
 
 function App (props) {
   const classes = useStyles(props)
-  const [moodIndex, setMoodIndex] = React.useState(0)
+  const [moodIndex, setMoodIndex] = React.useState(1)
   const [name, setName] = React.useState('')
   const [cardNumber, setCardNumber] = React.useState('')
   const [expiryMonth, setExpiryMonth] = React.useState('')
   const [expiryYear, setExpiryYear] = React.useState('')
   const [cvs, setCvs] = React.useState('')
+  const [isLoading, setIsLoading] = React.useState(false)
+  const [isError, setIsError] = React.useState(false)
 
   React.useEffect(() => {
-    const count = (name ? 1 : 0) + (cardNumber ? 1 : 0) + (expiryMonth && expiryYear ? 1 : 0) + (cvs ? 1 : 0)
+    const count = (name ? 1 : 0) + (cardNumber ? 1 : 0) + (expiryMonth && expiryYear && cvs ? 1 : 0) + (isLoading ? 1 : 0)
     setMoodIndex(count)
-  }, [cardNumber, cvs, expiryMonth, expiryYear, name])
+  }, [cardNumber, cvs, expiryMonth, expiryYear, isLoading, name])
 
   return (
     <Container className={classes.container} maxWidth='sm'>
       <CssBaseline />
-      <CreditCard mood={moods[moodIndex]} />
+      <CreditCard mood={isError ? 'ko' : moods[moodIndex]} />
       <Card className={classes.card}>
         <TextField
           className={classes.input}
@@ -78,6 +92,7 @@ function App (props) {
           label='Name'
           value={name}
           onChange={(event) => {
+            setIsError(false)
             setName(event.target.value)
           }}
         />
@@ -95,6 +110,7 @@ function App (props) {
             if (inputText.length > 0) {
               inputText = inputText.match(new RegExp('.{1,4}', 'g')).join('-')
             }
+            setIsError(false)
             setCardNumber(inputText)
           }}
         />
@@ -110,6 +126,7 @@ function App (props) {
               placeholder='MM'
               value={expiryMonth}
               onChange={(event) => {
+                setIsError(false)
                 setExpiryMonth(event.target.value)
               }}
             />
@@ -124,6 +141,7 @@ function App (props) {
               placeholder='YYYY'
               value={expiryYear}
               onChange={(event) => {
+                setIsError(false)
                 setExpiryYear(event.target.value)
               }}
             />
@@ -137,18 +155,31 @@ function App (props) {
             label='CVS'
             value={cvs}
             onChange={(event) => {
+              setIsError(false)
               setCvs(event.target.value)
             }}
           />
         </div>
-        <Button
-          className={classes.checkout}
-          variant='outlined'
-          color='primary'
-          onClick={() => { }}
-        >
-          {'Checkout'}
-        </Button>
+        <div className={classes.buttonWrapper}>
+          <Button
+            className={classes.checkout}
+            variant='outlined'
+            color='primary'
+            disabled={isLoading}
+            onClick={() => {
+              setIsLoading(true)
+              setTimeout(() => {
+                if (moodIndex !== 3) {
+                  setIsError(true)
+                }
+                setIsLoading(false)
+              }, 2000)
+            }}
+          >
+            {'Checkout'}
+          </Button>
+          {isLoading && <CircularProgress size={24} className={classes.buttonProgress} color='secondary' />}
+        </div>
       </Card>
     </Container>
   )
