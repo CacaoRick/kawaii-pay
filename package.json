@@ -2,6 +2,7 @@
   "name": "kawaii-pay",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://cacaorick.github.io/kawaii-pay",
   "dependencies": {
     "@material-ui/core": "^4.5.0",
     "react": "^16.10.1",
