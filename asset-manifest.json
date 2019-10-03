@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/kawaii-pay/static/js/main.7dd61c2f.chunk.js",
-    "main.js.map": "/kawaii-pay/static/js/main.7dd61c2f.chunk.js.map",
+    "main.js": "/kawaii-pay/static/js/main.272df4c6.chunk.js",
+    "main.js.map": "/kawaii-pay/static/js/main.272df4c6.chunk.js.map",
     "runtime-main.js": "/kawaii-pay/static/js/runtime-main.91b2fbb1.js",
     "runtime-main.js.map": "/kawaii-pay/static/js/runtime-main.91b2fbb1.js.map",
-    "static/js/2.5cf3b3c8.chunk.js": "/kawaii-pay/static/js/2.5cf3b3c8.chunk.js",
-    "static/js/2.5cf3b3c8.chunk.js.map": "/kawaii-pay/static/js/2.5cf3b3c8.chunk.js.map",
+    "static/js/2.497783f5.chunk.js": "/kawaii-pay/static/js/2.497783f5.chunk.js",
+    "static/js/2.497783f5.chunk.js.map": "/kawaii-pay/static/js/2.497783f5.chunk.js.map",
     "index.html": "/kawaii-pay/index.html",
-    "precache-manifest.85d27afb80579abdd5888669be3cdfab.js": "/kawaii-pay/precache-manifest.85d27afb80579abdd5888669be3cdfab.js",
+    "precache-manifest.c3b514568817583c2936526c7e8fbe7e.js": "/kawaii-pay/precache-manifest.c3b514568817583c2936526c7e8fbe7e.js",
     "service-worker.js": "/kawaii-pay/service-worker.js"
   }
 }
